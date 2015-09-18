@@ -1,0 +1,48 @@
+{
+  "name": "node-file-manager",
+  "version": "0.1.8",
+  "description": "File manager web based on Koa and Angular.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --harmony ./lib/index.js"
+  },
+  "bin": "../node-file-manager/bin/node-file-manager.sh",
+  "dependencies": {
+    "co": "^4.6.0",
+    "co-from-stream": "0.0.0",
+    "co-fs": "^1.2.0",
+    "co-fs-extra": "^1.1.0",
+    "co-multiparty": "0.0.1",
+    "co-views": "^2.1.0",
+    "ejs": "^2.3.4",
+    "koa": "^1.0.0",
+    "koa-bodyparser": "^2.0.1",
+    "koa-morgan": "^0.3.0",
+    "koa-mount": "^1.3.0",
+    "koa-router": "^5.1.2",
+    "koa-static": "^1.4.9",
+    "optimist": "^0.6.1",
+    "tracer": "^0.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/efeiefei/node-file-manager.git"
+  },
+  "keywords": [
+    "files",
+    "manager",
+    "koa",
+    "angular",
+    "web",
+    "server"
+  ],
+  "author": {
+    "name": "efei",
+    "email": "efeigm@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/efeiefei/file-manager/issues"
+  },
+  "homepage": "https://github.com/efeiefei/file-manager#readme"
+}

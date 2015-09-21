@@ -25,15 +25,15 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4>新建目录</h4>
+          <h4>New Folder</h4>
         </div>
         <div class="modal-body">
-          <p>完整路径　{{FM.curFolderPath + FM.newFolderName + '/'}}</p>
-          <label>目录名称 <input class="input-xlarge" ng-model="FM.newFolderName" /></label>
+          <p>Complete Path　{{FM.curFolderPath + FM.newFolderName + '/'}}</p>
+          <label>Folder Name <input class="input-xlarge" ng-model="FM.newFolderName" /></label>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.newFolderName" ng-click="FM.createFolder(FM.newFolderName)">确定</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.newFolderName" ng-click="FM.createFolder(FM.newFolderName)">OK</button>
         </div>
       </div>
     </div>
@@ -43,17 +43,17 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4>上传文件 - 只限小文件</h4>
+          <h4>Upload File - Just for small file now</h4>
         </div>
         <div class="modal-body">
-          <p>上传到 {{FM.curFolderPath + FM.uploadFile.name}}</p>
+          <p>Upload to {{FM.curFolderPath + FM.uploadFile.name}}</p>
           <div class="form-inline">
               <input type="file" class="form-control" ng-model="FM.uploadFile">
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.uploadFile" ng-click="FM.upload()">确定</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.uploadFile" ng-click="FM.upload()">OK</button>
         </div>
       </div>
     </div>
@@ -63,15 +63,14 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4>重命名</h4>
+          <h4>Rename</h4>
         </div>
         <div class="modal-body">
-          <!--<label>新名称 <input class="input-xlarge" value={{FM.selection[0].name}} ng-model="renameName" /></label>-->
-          <label>新名称 <input class="input-xlarge" ng-model="FM.newName" placeholder={{FM.selection[0].name}} /></label>
+          <label>New Name <input class="input-xlarge" ng-model="FM.newName" placeholder={{FM.selection[0].name}} /></label>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.newName" ng-click="FM.rename(FM.newName)">确定</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.newName" ng-click="FM.rename(FM.newName)">OK</button>
         </div>
       </div>
     </div>
@@ -81,14 +80,14 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4>移动</h4>
+          <h4>Move</h4>
         </div>
         <div class="modal-body">
-          <label>目标　<input class="input-xlarge" ng-model="FM.moveTarget" placeholder="{{FM.curFolderPath}}" /></label>
+          <label>Target　<input class="input-xlarge" ng-model="FM.moveTarget" placeholder="{{FM.curFolderPath}}" /></label>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.moveTarget" ng-click="FM.move(FM.moveTarget)">确定</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.moveTarget" ng-click="FM.move(FM.moveTarget)">OK</button>
         </div>
       </div>
     </div>
@@ -104,12 +103,12 @@
 
   <div class="container">
     <div class="btn-toolbar">
-      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('download')" ng-click="FM.download()"><span class="glyphicon glyphicon-download"></span> 下载</button>
-      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('delete')" ng-click="FM.delete()"><span class="glyphicon glyphicon-remove"></span> 删除</button>
-      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('move')" data-toggle="modal" data-target="#moveModal"><span class="glyphicon glyphicon-random"></span> 移动</button>
-      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('rename')" data-toggle="modal" data-target="#renameModal"><span class="glyphicon glyphicon-font"></span> 重命名</button>
-      <button type="button" class="btn btn-default pull-right" ng-disabled="FM.btnDisabled('create_folder')" data-toggle="modal" data-target="#createFolderModal"><span class="glyphicon glyphicon-plus-sign"></span> 新建目录</button>
-      <button type="button" class="btn btn-default pull-right" ng-disabled="FM.btnDisabled('upload_file')" data-toggle="modal" data-target="#uploadFileModal"><span class="glyphicon glyphicon-upload"></span> 上传文件</button>
+      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('download')" ng-click="FM.download()"><span class="glyphicon glyphicon-download"></span> Download</button>
+      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('delete')" ng-click="FM.delete()"><span class="glyphicon glyphicon-remove"></span> Delete</button>
+      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('move')" data-toggle="modal" data-target="#moveModal"><span class="glyphicon glyphicon-random"></span> Move</button>
+      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('rename')" data-toggle="modal" data-target="#renameModal"><span class="glyphicon glyphicon-font"></span> Rename</button>
+      <button type="button" class="btn btn-default pull-right" ng-disabled="FM.btnDisabled('create_folder')" data-toggle="modal" data-target="#createFolderModal"><span class="glyphicon glyphicon-plus-sign"></span> New Folder</button>
+      <button type="button" class="btn btn-default pull-right" ng-disabled="FM.btnDisabled('upload_file')" data-toggle="modal" data-target="#uploadFileModal"><span class="glyphicon glyphicon-upload"></span> Upload</button>
     </div>
 
     <ol class="breadcrumb">
@@ -121,10 +120,10 @@
       <thead>
         <tr class="sortable">
           <th><input type="checkbox" value="" ng-model="FM.selectAll"></th>
-          <th>类型</th>
-          <th>名称</th>
-          <th>大小</th>
-          <th>日期</th>
+          <th>Type</th>
+          <th>Name</th>
+          <th>Size</th>
+          <th>Time</th>
         </tr>
       </thead>
       <tbody>

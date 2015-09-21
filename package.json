@@ -1,12 +1,14 @@
 {
   "name": "node-file-manager",
-  "version": "0.1.8",
+  "version": "0.2.2",
   "description": "File manager web based on Koa and Angular.js",
   "main": "index.js",
   "scripts": {
     "start": "node --harmony ./lib/index.js"
   },
-  "bin": "../node-file-manager/bin/node-file-manager.sh",
+  "bin": {
+    "node-file-manager": "../node-file-manager/bin/node-file-manager.sh"
+  },
   "dependencies": {
     "co": "^4.6.0",
     "co-from-stream": "0.0.0",
@@ -42,7 +44,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/efeiefei/file-manager/issues"
+    "url": "https://github.com/efeiefei/node-file-manager/issues"
   },
-  "homepage": "https://github.com/efeiefei/file-manager#readme"
+  "homepage": "https://github.com/efeiefei/node-file-manager#readme"
 }

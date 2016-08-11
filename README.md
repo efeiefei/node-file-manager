@@ -1,7 +1,7 @@
 # Screen Shot
 ![screenshot](https://raw.githubusercontent.com/efeiefei/node-file-manager/master/example/screenshot.png)
 
-# Usag
+# Usage
 
 ```sh
   npm install -g node-file-manager
@@ -13,6 +13,7 @@ Or
 ```sh
   git clone https://github.com/efeiefei/node-file-manager.git
   cd node-file-manager
+  npm i
   cd lib
   node --harmony index.js -p 8080 -d /path/to
 ```

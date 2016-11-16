@@ -29,7 +29,7 @@
         </div>
         <div class="modal-body">
           <p>Complete Path　{{FM.curFolderPath + FM.newFolderName + '/'}}</p>
-          <label>Folder Name <input class="input-xlarge" ng-model="FM.newFolderName" /></label>
+          <label class="control-label">Folder Name</label><input class="form-control" autofocus ng-model="FM.newFolderName" />
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -48,7 +48,7 @@
         <div class="modal-body">
           <p>Upload to {{FM.curFolderPath + FM.uploadFile.name}}</p>
           <div class="form-inline">
-              <input type="file" class="form-control" ng-model="FM.uploadFile">
+              <input type="file" class="form-control" autofocus ng-model="FM.uploadFile">
           </div>
         </div>
         <div class="modal-footer">
@@ -66,7 +66,7 @@
           <h4>Rename</h4>
         </div>
         <div class="modal-body">
-          <label>New Name <input class="input-xlarge" ng-model="FM.newName" placeholder={{FM.selection[0].name}} /></label>
+          <label class="control-label">New Name</label><input class="form-control" autofocus ng-model="FM.newName" placeholder={{FM.selection[0].name}} />
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -83,11 +83,31 @@
           <h4>Move</h4>
         </div>
         <div class="modal-body">
-          <label>Target　<input class="input-xlarge" ng-model="FM.moveTarget" placeholder="{{FM.curFolderPath}}" /></label>
+          <label class="control-label">Target</label><input class="form-control" autofocus ng-model="FM.moveTarget" placeholder="{{FM.curFolderPath}}" />
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.moveTarget" ng-click="FM.move(FM.moveTarget)">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="archiveModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Create Archive</h4>
+        </div>
+        <div class="modal-body">
+          <label class="control-label">Name</label><input class="form-control" autofocus ng-model="FM.archiveTarget" placeholder="Enter name of archive" />
+          <div class="checkbox">
+            <label><input type="checkbox" ng-init="FM.archiveEmbedDirs = true" ng-model="FM.archiveEmbedDirs"> Embed directories in archive</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.archiveTarget" ng-click="FM.archive(FM.archiveTarget)">Create</button>
         </div>
       </div>
     </div>
@@ -107,6 +127,7 @@
       <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('delete')" ng-click="FM.delete()"><span class="glyphicon glyphicon-remove"></span> Delete</button>
       <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('move')" data-toggle="modal" data-target="#moveModal"><span class="glyphicon glyphicon-random"></span> Move</button>
       <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('rename')" data-toggle="modal" data-target="#renameModal"><span class="glyphicon glyphicon-font"></span> Rename</button>
+      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('archive')" data-toggle="modal" data-target="#archiveModal" ng-click="FM.updateArchiveName()"><span class="glyphicon glyphicon-download-alt"></span> Archive</button>
       <button type="button" class="btn btn-default pull-right" ng-disabled="FM.btnDisabled('create_folder')" data-toggle="modal" data-target="#createFolderModal"><span class="glyphicon glyphicon-plus-sign"></span> New Folder</button>
       <button type="button" class="btn btn-default pull-right" ng-disabled="FM.btnDisabled('upload_file')" data-toggle="modal" data-target="#uploadFileModal"><span class="glyphicon glyphicon-upload"></span> Upload</button>
     </div>

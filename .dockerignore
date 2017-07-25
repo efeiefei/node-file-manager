@@ -1,0 +1,7 @@
+*
+!bin
+!lib
+!LICENSE
+!README
+!package.json
+!package-lock.json

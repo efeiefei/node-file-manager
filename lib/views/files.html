@@ -17,6 +17,11 @@
     .sortable {
       cursor: pointer;
     }
+    .disk-usage {
+      text-align: right;
+      color: #777;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 
@@ -122,6 +127,7 @@
   </nav>
 
   <div class="container">
+    <div class="disk-usage">Disk usage: {{FM.diskUsage.used}}/{{FM.diskUsage.total}} ({{FM.diskUsage.available}} available)</div>
     <div class="btn-toolbar">
       <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('download')" ng-click="FM.download()"><span class="glyphicon glyphicon-download"></span> Download</button>
       <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('delete')" ng-click="FM.delete()"><span class="glyphicon glyphicon-remove"></span> Delete</button>

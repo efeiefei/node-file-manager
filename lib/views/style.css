@@ -1,0 +1,147 @@
+.sortable {
+      cursor: pointer;
+    }
+
+    .sortable:hover {
+      background: rgb(70, 69, 69) !important;
+    }
+
+    .theButtonsOfMyLife {
+      color: rgb(236, 232, 227) !important;
+
+    }
+
+    .theButtonsOfMyLife:hover {
+      text-decoration: none !important;
+    }
+
+    .theBrand {
+      color: rgb(74, 197, 105);
+      font-size: 1.5em;
+    }
+
+    body {
+      background-color: #191919;
+    }
+
+    .sortable {
+      color: aliceblue !important;
+    }
+
+    input[type='checkbox'] {
+      background-color: rgb(58, 117, 168);
+    }
+
+    .fileItem a {
+      color: aliceblue;
+    }
+
+    .fileItem a:hover {
+      text-decoration: none;
+      color: darkgrey;
+    }
+
+    .item-1 {
+      font-weight: 600;
+    }
+
+    .starClr {
+      color: #ff0077;
+    }
+
+    .theStarThing {
+      background: rgb(0, 0, 0, 0);
+      color: aliceblue;
+      margin: 0%;
+      border: 0px;
+    }
+    .chrome:hover{
+      background-color: azure;
+    }
+    .chrome {
+      display: -ms-flexbox;
+      display: flex;
+      color: azure;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.3rem;
+      list-style: none;
+      background-color: rgb(0, 0, 0);
+      border-radius: 0.25rem;
+      width: 100%;
+    }
+
+    .fileItem {
+      display: -ms-flexbox;
+      display: flex;
+      color: azure;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.3rem;
+      list-style: none;
+      background-color: rgb(0, 0, 0);
+      border-radius: 0.25rem;
+      width: 100%;
+    }
+
+    .global {
+      flex-direction: row-reverse;
+    }
+
+    .fileItem1 {
+      display: -ms-flexbox;
+      display: flex;
+      color: azure;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      padding: 0.75rem 1rem;
+      list-style: none;
+      background-color: rgb(7, 7, 7);
+      border-radius: 0.25rem;
+      width: 100%;
+    }
+
+    .theButtonsOfMyLife a {
+      text-decoration: none;
+      color: aliceblue;
+    }
+
+    .theButtonsOfMyLife a:hover {
+      text-decoration: none;
+      color: rgba(240, 248, 255, 0.514);
+    }
+
+    .buttonsInNav>.row>.items>a {
+      margin-right: 2rem;
+      color: aliceblue;
+      text-decoration: none;
+    }
+
+    .theButtonsOfMyLife>.row>.items>a {
+      margin-right: 2rem;
+      color: aliceblue;
+      text-decoration: none;
+    }
+
+    .theButtonsOfMyLife>.row>.items>a {
+      margin-right: 2rem;
+      color: aliceblue;
+      text-decoration: none;
+    }
+:last-child
+    .buttonsInNav>.row>.items>a:hover {
+      color: rgba(240, 248, 255, 0.479);
+    }
+
+    .theButtonsOfMyLife>.row>.items>a:hover {
+      color: rgba(240, 248, 255, 0.479);
+    }
+
+    #listNav {
+      overflow: hidden;
+    }
+    .breadcrumb>li:hover{
+      text-decoration: none !important; 
+    }

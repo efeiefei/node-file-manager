@@ -1,5 +1,5 @@
 # Screen Shot
-![](images/filename image.png)
+![](/image.png)
 
 # Usage
 

@@ -1,5 +1,5 @@
 # Screen Shot
-![screenshot](https://raw.githubusercontent.com/efeiefei/node-file-manager/master/example/screenshot.png)
+![](images/filename image.png)
 
 # Usage
 

@@ -1,176 +1,432 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="FMApp">
+
 <head>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>File Manager</title>
+  <title>Files On Air</title>
 
-  <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-  <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- font awesome stylesheet -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <script src="//cdn.bootcss.com/angular.js/1.4.5/angular.min.js"></script>
   <script src="js/angular-file.js"></script>
   <script src="js/app.js"></script>
+  <style>
+    .fa-folder-open {
+      color: red;
+    }
 
-  <style type="text/css">
     .sortable {
       cursor: pointer;
+    }
+
+    .sortable:hover {
+      background: rgb(70, 69, 69) !important;
+      color: rgb(255, 15, 203) !important;
+    }
+
+    .theButtonsOfMyLife {
+      color: crimson !important;
+
+    }
+
+    .theButtonsOfMyLife:hover {
+      text-decoration: none !important;
+    }
+
+    .fa-file {
+      color: aqua;
+    }
+
+    .theBrand {
+      color: rgb(74, 197, 105);
+      font-size: 1.5em;
+    }
+
+    body {
+      background-color: #191919;
+    }
+
+    .sortable {
+      color: rgb(255, 15, 203) !important;
+    }
+
+    input[type='checkbox'] {
+      background-color: rgb(58, 117, 168);
+    }
+
+    .fileItem a {
+      color: aliceblue;
+    }
+
+    .fileItem a:hover {
+      text-decoration: none;
+      color: darkgrey;
+    }
+
+    .item-1 {
+      font-weight: 600;
+    }
+
+    .starClr {
+      color: #ff0077;
+    }
+
+    .theStarThing {
+      background: rgb(0, 0, 0, 0);
+      color: aliceblue;
+      margin: 0%;
+      border: 0px;
+    }
+
+    .chrome:hover {
+      cursor: unset !important;
+      background-color: azure;
+      color: crimson !important;
+    }
+
+    .chrome {
+      display: -ms-flexbox;
+      display: flex;
+      color: crimson;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.3rem;
+      list-style: none;
+      background-color: rgb(0, 0, 0);
+      border-radius: 0.25rem;
+      width: 100%;
+    }
+
+    .fileItem {
+      display: -ms-flexbox;
+      display: flex;
+      color: azure;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.3rem;
+      list-style: none;
+      background-color: rgb(0, 0, 0);
+      border-radius: 0.25rem;
+      width: 100%;
+    }
+
+    .global {
+      flex-direction: row-reverse;
+    }
+
+    .fileItem1>div {
+      line-height: 3.5rem;
+      vertical-align: middle;
+    }
+
+    .fileItem1 {
+      vertical-align: middle;
+      height: 5rem;
+      display: -ms-flexbox;
+      display: flex;
+      color: azure;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      padding: 0.75rem 1rem;
+      list-style: none;
+      background-color: rgb(7, 7, 7);
+      border-radius: 0.25rem;
+      width: 100%;
+    }
+
+    .theButtonsOfMyLife a {
+      text-decoration: none;
+      color: crimson;
+    }
+
+    .theButtonsOfMyLife a:hover {
+      text-decoration: none;
+      color: rgb(214, 112, 132);
+    }
+
+    .buttonsInNav>.row>.items>a {
+      margin-right: 2rem;
+      color: aliceblue;
+      text-decoration: none;
+    }
+
+    .theButtonsOfMyLife>.row>.items>a {
+      margin-right: 2rem;
+      color: aliceblue;
+      text-decoration: none;
+    }
+
+    .theButtonsOfMyLife>.row>.items>a {
+      margin-right: 2rem;
+      color: aliceblue;
+      text-decoration: none;
+    }
+
+    .buttonsInNav>.row>.items>a:hover {
+      color: rgba(240, 248, 255, 0.479);
+    }
+
+    .theButtonsOfMyLife>.row>.items>a:hover {
+      color: rgba(240, 248, 255, 0.479);
+    }
+
+    #listNav {
+      overflow: hidden;
+    }
+
+    .breadcrumb {
+      background-color: #2B2B2B;
+    }
+
+    .breadcrumb>li>a {
+      color: cornsilk;
+    }
+
+    .breadcrumb>li>a:hover {
+      color: rgba(255, 248, 220, 0.63);
+      text-decoration: none;
     }
   </style>
 </head>
 
+
+
+
 <body ng-controller="FileManagerCtr as FM">
-  <div class="modal fade" id="createFolderModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4>New Folder</h4>
-        </div>
-        <div class="modal-body">
-          <p>Complete Path　{{FM.curFolderPath + FM.newFolderName + '/'}}</p>
-          <label class="control-label">Folder Name</label><input class="form-control" autofocus ng-model="FM.newFolderName" />
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.newFolderName" ng-click="FM.createFolder(FM.newFolderName)">OK</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="modal fade" id="uploadFileModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4>Upload File - Just for small file now</h4>
-        </div>
-        <div class="modal-body">
-          <p>Upload to {{FM.curFolderPath + FM.uploadFile.name}}</p>
-          <div class="form-inline">
-              <input type="file" class="form-control" autofocus ng-model="FM.uploadFile">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.uploadFile" ng-click="FM.upload()">OK</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="modal fade" id="renameModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4>Rename</h4>
-        </div>
-        <div class="modal-body">
-          <label class="control-label">New Name</label><input class="form-control" autofocus ng-model="FM.newName" placeholder={{FM.selection[0].name}} />
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.newName" ng-click="FM.rename(FM.newName)">OK</button>
-        </div>
-      </div>
+  <nav class="navbar navbar-expand-lg md-5 sticky-top navbar-dark" style="background-color:#2B2B2B">
+    <div class="">
+      <center>
+        <a class="navbar-brand" href="http://192.168.179.57:8080/">Files On Air</a>
+      </center>
     </div>
-  </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="modal fade" id="moveModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4>Move</h4>
-        </div>
-        <div class="modal-body">
-          <label class="control-label">Target</label><input class="form-control" autofocus ng-model="FM.moveTarget" placeholder="{{FM.curFolderPath}}" />
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.moveTarget" ng-click="FM.move(FM.moveTarget)">OK</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="modal fade" id="archiveModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4>Create Archive</h4>
-        </div>
-        <div class="modal-body">
-          <label class="control-label">Name</label><input class="form-control" autofocus ng-model="FM.archiveTarget" placeholder="Enter name of archive" />
-          <div class="checkbox">
-            <label><input type="checkbox" ng-init="FM.archiveEmbedDirs = true" ng-model="FM.archiveEmbedDirs"> Embed directories in archive</label>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.archiveTarget" ng-click="FM.archive(FM.archiveTarget)">Create</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">File Manager</a>
-      </div>
-    </div>
   </nav>
 
   <div class="container">
-    <div class="btn-toolbar">
-      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('download')" ng-click="FM.download()"><span class="glyphicon glyphicon-download"></span> Download</button>
-      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('delete')" ng-click="FM.delete()"><span class="glyphicon glyphicon-remove"></span> Delete</button>
-      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('move')" data-toggle="modal" data-target="#moveModal"><span class="glyphicon glyphicon-random"></span> Move</button>
-      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('rename')" data-toggle="modal" data-target="#renameModal"><span class="glyphicon glyphicon-font"></span> Rename</button>
-      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('archive')" data-toggle="modal" data-target="#archiveModal" ng-click="FM.updateArchiveName()"><span class="glyphicon glyphicon-download-alt"></span> Archive</button>
-      <button type="button" class="btn btn-default pull-right" ng-disabled="FM.btnDisabled('create_folder')" data-toggle="modal" data-target="#createFolderModal"><span class="glyphicon glyphicon-plus-sign"></span> New Folder</button>
-      <button type="button" class="btn btn-default pull-right" ng-disabled="FM.btnDisabled('upload_file')" data-toggle="modal" data-target="#uploadFileModal"><span class="glyphicon glyphicon-upload"></span> Upload</button>
+
+    <div class="modal fade" id="createFolderModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>New Folder</h4>
+          </div>
+          <div class="modal-body">
+            <p>Complete Path　{{FM.curFolderPath + FM.newFolderName + '/'}}</p>
+            <label class="control-label">Folder Name</label><input class="form-control" autofocus
+              ng-model="FM.newFolderName" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.newFolderName"
+              ng-click="FM.createFolder(FM.newFolderName)">OK</button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <ol class="breadcrumb">
-      <span class="glyphicon glyphicon-home"></span>
-      <li ng-repeat="p in FM.curBreadCrumbPaths"><a href={{p.path}}>{{p.name}}</a></li>
-    </ol>
-
-    <table class="table table-hover table-striped">
-      <thead>
-        <tr class="sortable">
-          <th><input type="checkbox" value="" ng-model="FM.selectAll"></th>
-          <th>Type</th>
-          <th>Name</th>
-          <th>Size</th>
-          <th>Time</th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr class="sortable" ng-repeat="file in FM.curFiles | orderBy:'folder'">
-        <td><input type="checkbox" value="{{file.name}}" ng-model="file.selected"></td>
-        <td ng-click="FM.clickFile(file)"><span class="{{file.folder ? 'glyphicon glyphicon-folder-open' : 'glyphicon glyphicon-file'}}"></span></td>
-        <td ng-click="FM.clickFile(file)"><a>{{file.name}}</a></td>
-        <td>{{file.humanSize}}</td>
-        <td>{{file.humanTime}}</td>
-      </tr>
-      </tbody>
-    </table>
-
-    <div id="successAlert" class="alert alert-success" role="alert" style="display: none">
-      <span>{{FM.successData}}</span>
+    <div class="modal fade" id="uploadFileModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Upload File - Just for small file now</h4>
+          </div>
+          <div class="modal-body">
+            <p>Upload to {{FM.curFolderPath + FM.uploadFile.name}}</p>
+            <div class="form-inline">
+              <input type="file" class="form-control" autofocus ng-model="FM.uploadFile">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.uploadFile"
+              ng-click="FM.upload()">OK</button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div id="errorAlert" class="alert alert-danger" role="alert" style="display: none">
-      <button type="button" class="close" data-dismiss="alert" alert-label="Close">
-        <span aria-hidden="true">&times</span>
-      </button>
-      <strong>Error!</strong>
-      {{FM.errorData}}
+    <div class="modal fade" id="renameModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Rename</h4>
+          </div>
+          <div class="modal-body">
+            <label class="control-label">New Name</label><input class="form-control" autofocus ng-model="FM.newName"
+              placeholder={{FM.selection[0].name}} />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.newName"
+              ng-click="FM.rename(FM.newName)">OK</button>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <div class="modal fade" id="moveModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Move</h4>
+          </div>
+          <div class="modal-body">
+            <label class="control-label">Target</label><input class="form-control" autofocus ng-model="FM.moveTarget"
+              placeholder="{{FM.curFolderPath}}" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.moveTarget"
+              ng-click="FM.move(FM.moveTarget)">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="archiveModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Create Archive</h4>
+          </div>
+          <div class="modal-body">
+            <label class="control-label">Name</label><input class="form-control" autofocus ng-model="FM.archiveTarget"
+              placeholder="Enter name of archive" />
+            <div class="checkbox">
+              <label><input type="checkbox" ng-init="FM.archiveEmbedDirs = true" ng-model="FM.archiveEmbedDirs"> Embed
+                directories in archive</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.archiveTarget"
+              ng-click="FM.archive(FM.archiveTarget)">Create</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="">
+
+      <ol class="breadcrumb mt-3">
+        <li class="mr-2" ng-repeat="p in FM.curBreadCrumbPaths"><a href={{p.path}}>{{p.name}} <i
+              class="ml-2 fas fa-chevron-right"></i> </a></li>
+      </ol>
+    </div>
+    <div class=" mt-4 mb-4">
+      <div class="ml-4 ">
+        <div class=" closeBtn ">
+          <div class="row mb-3 mt-3 theButtonsOfMyLife">
+            <div class="items col mr-4" ng-disabled="FM.btnDisabled('download')" ng-click="FM.download()"><a href=""> <i
+                  class="fas fa-download"></i> Download</a></div>
+            <div class="items col mr-4" ng-disabled="FM.btnDisabled('upload_file')" data-toggle="modal"
+              data-target="#uploadFileModal"><a href=""> <i class="fas fa-upload"></i> Upload</a></div>
+            <div class="items col mr-4" ng-disabled="FM.btnDisabled('create_folder')" data-toggle="modal"
+              data-target="#createFolderModal"><a href=""> <i class="fas fa-folder-plus"></i> New Folder</a></div>
+            <div class="items col mr-4" ng-disabled="FM.btnDisabled('move')" data-toggle="modal"
+              data-target="#moveModal">
+              <a href=""> <i class="fas fa-expand-arrows-alt"></i> Move</a></div>
+            <div class="items col mr-4" ng-disabled="FM.btnDisabled('rename')" data-toggle="modal"
+              data-target="#renameModal"><a href=""> <i class="fas fa-font"></i> Rename</a></div>
+            <div class="items col" ng-disabled="FM.btnDisabled('delete')" ng-click="FM.delete()"><a href=""> <i
+                  class="fas fa-trash-alt"></i> Delete</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <div class="ml-4">
+        <div class="sortable row md-4 chrome" style="">
+          <div class="col container" >
+            <center>Type</center>
+          </div>
+          <div class="col container">Name</div>
+          <div class="col container">
+            <center>Size</center>
+          </div>
+          <div class="col container">
+            <center>Time</center>
+          </div>
+          <div class="col "><input class="container" type="checkbox" value="" ng-model="FM.selectAll"></div>
+        </div>
+      </div>
+      <div class="ml-4 ">
+        <div class="">
+          <div class="sortable row fileItem item-1 " ng-repeat="file in FM.curFiles | orderBy:'-folder'">
+            <div class="col" ng-click="FM.clickFile(file)">
+              <center><span class="{{file.folder ? 'fas fa-folder-open' : 'fas fa-file'}}"></span></center>
+            </div>
+            <div class="col" ng-click="FM.clickFile(file)" style="overflow: hidden;color: rgba(128, 255, 0, 0.924)">
+              <a>{{file.name}}</a></div>
+            <div class="col" ng-click="FM.clickFile(file)" style="color:#ff0077;">
+              <center>{{file.humanSize}}</center>
+            </div>
+            <div class="col" ng-click="FM.clickFile(file)" style="color: rgba(0, 255, 179, 0.603)">
+              <center>{{file.humanTime}}</center>
+            </div>
+            <div class="col">
+              <center><input class="container" type="checkbox" value="{{file.name}}" ng-model="file.selected"></center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 
+  <div id="successAlert" class="alert alert-success" role="alert" style="display: none">
+    <span>{{FM.successData}}</span>
+  </div>
+
+  <div id="errorAlert" class="alert alert-danger" role="alert" style="display: none">
+    <button type="button" class="close" data-dismiss="alert" alert-label="Close">
+      <span aria-hidden="true">&times</span>
+    </button>
+    <strong>Error!</strong>
+    {{FM.errorData}}
+  </div>
+  </div>
+
+  </div>
+  <div class=" fileItem1">
+    <div class="container text-center">
+      May the odds be ever in your favour.
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <script>
+  </script>
+  <script src="js/custom.js"></script>
 </body>
+
 </html>

@@ -137,26 +137,28 @@
       <li ng-repeat="p in FM.curBreadCrumbPaths"><a href={{p.path}}>{{p.name}}</a></li>
     </ol>
 
-    <table class="table table-hover table-striped">
-      <thead>
-        <tr class="sortable">
-          <th><input type="checkbox" value="" ng-model="FM.selectAll"></th>
-          <th>Type</th>
-          <th>Name</th>
-          <th>Size</th>
-          <th>Time</th>
+    <div class="table-responsive">
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr class="sortable">
+            <th><input type="checkbox" value="" ng-model="FM.selectAll"></th>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr class="sortable" ng-repeat="file in FM.curFiles | orderBy:'folder'">
+          <td><input type="checkbox" value="{{file.name}}" ng-model="file.selected"></td>
+          <td ng-click="FM.clickFile(file)"><span class="{{file.folder ? 'glyphicon glyphicon-folder-open' : 'glyphicon glyphicon-file'}}"></span></td>
+          <td ng-click="FM.clickFile(file)"><a>{{file.name}}</a></td>
+          <td>{{file.humanSize}}</td>
+          <td>{{file.humanTime}}</td>
         </tr>
-      </thead>
-      <tbody>
-      <tr class="sortable" ng-repeat="file in FM.curFiles | orderBy:'folder'">
-        <td><input type="checkbox" value="{{file.name}}" ng-model="file.selected"></td>
-        <td ng-click="FM.clickFile(file)"><span class="{{file.folder ? 'glyphicon glyphicon-folder-open' : 'glyphicon glyphicon-file'}}"></span></td>
-        <td ng-click="FM.clickFile(file)"><a>{{file.name}}</a></td>
-        <td>{{file.humanSize}}</td>
-        <td>{{file.humanTime}}</td>
-      </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
 
     <div id="successAlert" class="alert alert-success" role="alert" style="display: none">
       <span>{{FM.successData}}</span>
